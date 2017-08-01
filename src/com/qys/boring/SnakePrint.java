@@ -2,6 +2,7 @@ package com.qys.boring;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -44,6 +45,7 @@ public class SnakePrint extends JPanel {
 	public void paintComponent(Graphics pen) {
 		super.paintComponent(pen);
 		_creatGameInit(pen);
+		_createSnake(pen);
 		
 		this.requestFocus();
 	}
@@ -72,6 +74,17 @@ public class SnakePrint extends JPanel {
 					this._x + this._panelWidth,
 					this._y + i * this._tileSize);
 		}
+	}
+	
+	private void _createSnake(Graphics pen) {
+		Snake snake = new Snake();
+		ArrayList<Point> _snakeList = snake.get_snakeList();
+		
+		for(Point p : _snakeList) {
+			pen.setColor(Color.BLUE);
+			pen.fillRect(p.get_x(), p.get_y(), 10, 10);
+		}
+		
 	}
 
 }
