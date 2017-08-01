@@ -40,16 +40,16 @@ public class SnakePrint extends JPanel {
 		this.requestFocus();
 
 	}
-	//畫組件
+
+	// 畫組件
 	@Override
 	public void paintComponent(Graphics pen) {
 		super.paintComponent(pen);
 		_creatGameInit(pen);
 		_createSnake(pen);
-		
+		setGameControl(new SnakeControl());
 		this.requestFocus();
 	}
-	
 
 	// 畫網格
 
@@ -62,29 +62,30 @@ public class SnakePrint extends JPanel {
 
 		pen.setColor(Color.GRAY);
 		for (int i = 1; i < this._panelWidth / this._tileSize; i++) {
-			pen.drawLine(this._x + i * _tileSize, 
-					this._y, 
-					this._x + i * _tileSize, 
-					this._y + this._panelHeight);
+			pen.drawLine(this._x + i * _tileSize, this._y, this._x + i * _tileSize, this._y + this._panelHeight);
 		}
 
 		for (int i = 1; i < this._panelHeight / this._tileSize; ++i) {
-			pen.drawLine(this._x,
-					this._y + i * this._tileSize, 
-					this._x + this._panelWidth,
+			pen.drawLine(this._x, this._y + i * this._tileSize, this._x + this._panelWidth,
 					this._y + i * this._tileSize);
 		}
 	}
-	
+
+	// 画蛇
 	private void _createSnake(Graphics pen) {
 		Snake snake = new Snake();
 		ArrayList<Point> _snakeList = snake.get_snakeList();
-		
-		for(Point p : _snakeList) {
+
+		for (Point p : _snakeList) {
 			pen.setColor(Color.BLUE);
-			pen.fillRect(p.get_x(), p.get_y(), 10, 10);
+			pen.fillRect(p.get_x(), p.get_y(), _tileSize, _tileSize);
 		}
-		
+
+	}
+
+	// 控制器
+	public void setGameControl(SnakeControl control) {
+		this.addKeyListener(control);
 	}
 
 }

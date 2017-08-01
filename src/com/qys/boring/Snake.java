@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Snake {
-	ArrayList<Point> _snakeList= new ArrayList<Point>();
+	private static ArrayList<Point> _snakeList= new ArrayList<Point>();
 	
 	{
 		_initSnake();
@@ -18,7 +18,7 @@ public class Snake {
 		_snakeList.add(p);
 	}
 
-	public ArrayList<Point> get_snakeList() {
+	public static ArrayList<Point> get_snakeList() {
 		return _snakeList;
 	}
 
