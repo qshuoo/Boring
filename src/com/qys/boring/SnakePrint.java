@@ -60,11 +60,16 @@ public class SnakePrint extends JPanel {
 
 		pen.setColor(Color.GRAY);
 		for (int i = 1; i < this._panelWidth / this._tileSize; i++) {
-			pen.drawLine(this._x + i * _tileSize, this._y, this._x + i * _tileSize, this._y + this._panelHeight);
+			pen.drawLine(this._x + i * _tileSize, 
+					this._y, 
+					this._x + i * _tileSize, 
+					this._y + this._panelHeight);
 		}
 
 		for (int i = 1; i < this._panelHeight / this._tileSize; ++i) {
-			pen.drawLine(this._x, this._y + i * this._tileSize, this._x + this._panelWidth,
+			pen.drawLine(this._x,
+					this._y + i * this._tileSize, 
+					this._x + this._panelWidth,
 					this._y + i * this._tileSize);
 		}
 	}
