@@ -4,6 +4,11 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+/**
+ * 设置窗口的格式
+ * @author Administrator
+ *
+ */
 
 public class FrameClient extends JFrame{
 	//每个Frame都有一个id
