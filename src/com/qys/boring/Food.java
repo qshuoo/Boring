@@ -19,6 +19,13 @@ public class Food {
 	}
 
 
+	public static void resertPoint() {
+		Random random = new Random();
+		foodPoint.set_x(random.nextInt(40)*10);
+		foodPoint.set_y(random.nextInt(40)*10);
+	}
+	
+	
 	public static Point getFoodPoint() {
 		return foodPoint;
 	}
@@ -27,6 +34,7 @@ public class Food {
 	public static void setFoodPoint(Point foodPoint) {
 		Food.foodPoint = foodPoint;
 	}
+	
 
 	
 }

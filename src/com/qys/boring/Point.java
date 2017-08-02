@@ -28,6 +28,22 @@ public class Point {
 		return "Point [_x=" + _x + ", _y=" + _y + "]";
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Point other = (Point) obj;
+		if (_x != other._x)
+			return false;
+		if (_y != other._y)
+			return false;
+		return true;
+	}
+	
 	
 
 }

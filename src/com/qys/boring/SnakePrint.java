@@ -115,7 +115,11 @@ public class SnakePrint extends JPanel {
 	
 	//蛇移动判定
 	private void _moveSnake() {
-		if(!_crashJudge())
+		if(_eatJudge()) {
+			snake.eat(Food.getFoodPoint());
+			Food.resertPoint();
+		}
+		else if(!_crashJudge())
 			snake.move();
 	}
 	
@@ -127,6 +131,13 @@ public class SnakePrint extends JPanel {
 		return false;
 	}
 
+	//蛇吃食物判定
+	
+	private boolean _eatJudge() {
+		if(snake.getNext().equals(Food.getFoodPoint()))
+			return true;
+		return false;
+	}
 	// 控制器
 	public void setGameControl(SnakeControl control) {
 		this.addKeyListener(control);

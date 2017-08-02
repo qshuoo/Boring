@@ -67,6 +67,15 @@ public class Snake {
 		_snakeList.removeLast();
 	}
 	
+	
+	//吃
+	public void eat(Point p ) {
+		Point newP = new Point();
+		newP.set_x(p.get_x());
+		newP.set_y(p.get_y());
+		_snakeList.addFirst(newP);
+	}
+	
 	//获取下一位置
 	public Point getNext() {
 		Point head = _snakeList.get(0);
