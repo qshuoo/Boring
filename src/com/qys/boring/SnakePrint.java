@@ -64,12 +64,11 @@ public class SnakePrint extends JPanel {
 	// ®‹¾W¸ñ
 
 	private void _creatGameInit(Graphics pen) {
-		pen.setColor(Color.BLACK);
-		pen.drawRect(_x, _y, _panelWidth, _panelHeight);
-
+		
+		//»­±³¾°
 		pen.setColor(Color.WHITE);
 		pen.fillRect(_x + 1, _y + 1, _panelWidth - 1, _panelHeight - 1);
-
+		//»­Ïß
 		pen.setColor(Color.GRAY);
 		for (int i = 1; i < this._panelWidth / this._tileSize; i++) {
 			pen.drawLine(this._x + i * _tileSize, this._y, this._x + i * _tileSize, this._y + this._panelHeight);
@@ -79,6 +78,15 @@ public class SnakePrint extends JPanel {
 			pen.drawLine(this._x, this._y + i * this._tileSize, this._x + this._panelWidth,
 					this._y + i * this._tileSize);
 		}
+		//»­±ß¿ò
+		
+		pen.setColor(Color.BLACK);
+		pen.drawRect(_x, _y, _panelWidth, _panelHeight);
+//		pen.fillRect(_x, _y, _panelWidth, _tileSize);
+//		pen.fillRect(_x, _y, _tileSize, _panelHeight);
+//		pen.fillRect(_x, _panelHeight-_tileSize, _panelWidth, _tileSize);
+//		pen.fillRect(_panelWidth-_tileSize, _y, _tileSize, _panelHeight);
+		
 	}
 
 	// »­Éß

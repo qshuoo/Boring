@@ -18,8 +18,8 @@ public class Snake {
 	private void _initSnake() {
 		Random random = new Random();
 		Point p = new Point();
-		p.set_x(random.nextInt(39) * 10);
-		p.set_y(random.nextInt(39) * 10);
+		p.set_x(random.nextInt(40) * 10);
+		p.set_y(random.nextInt(40) * 10);
 		_snakeList.add(p);
 
 	}
