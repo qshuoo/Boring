@@ -21,6 +21,8 @@ public class SnakePrint extends JPanel {
 	private final int _panelWidth = 400;
 	private final int _panelHeight = 400;
 	private final int _tileSize = 10;
+	
+	Snake snake = new Snake();
 
 	public SnakePrint() {
 		_initButton();
@@ -73,7 +75,7 @@ public class SnakePrint extends JPanel {
 
 	// »­Éß
 	private void _createSnake(Graphics pen) {
-		Snake snake = new Snake();
+		
 		ArrayList<Point> _snakeList = snake.get_snakeList();
 
 		for (Point p : _snakeList) {

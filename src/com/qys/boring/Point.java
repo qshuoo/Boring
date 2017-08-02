@@ -23,6 +23,10 @@ public class Point {
 	public void set_y(int _y) {
 		this._y = _y;
 	}
+	@Override
+	public String toString() {
+		return "Point [_x=" + _x + ", _y=" + _y + "]";
+	}
 	
 	
 

@@ -8,6 +8,13 @@ public class BoringClient implements Runnable{
 		frameClient.setContentPane(snakePrint);
 		while(true) {
 			snakePrint.repaint();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 
