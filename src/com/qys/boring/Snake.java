@@ -58,17 +58,25 @@ public class Snake {
 		Snake._snakeList = _snakeList;
 	}
 
+	
+	//移动
 	public void move() {
 		Point head = _snakeList.get(0);
 		Point newHead = new Point(head.get_x() + direction.get_x(), head.get_y() + direction.get_y());
 		_snakeList.addFirst(newHead);
 		_snakeList.removeLast();
 	}
-
+	
+	//获取下一位置
+	public Point getNext() {
+		Point head = _snakeList.get(0);
+		return new Point(head.get_x() + direction.get_x(), head.get_y() + direction.get_y());
+	}
+	//获取方向
 	public static Point getDirection() {
 		return direction;
 	}
-
+	//设置方向
 	public static void setDirection(Point direction) {
 		Snake.direction = direction;
 	}
