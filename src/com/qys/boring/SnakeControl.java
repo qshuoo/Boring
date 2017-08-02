@@ -2,12 +2,12 @@ package com.qys.boring;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class SnakeControl implements KeyListener{
 
 	
-	ArrayList<Point> _snakeList = Snake.get_snakeList();
+	LinkedList<Point> _snakeList = Snake.get_snakeList();
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub

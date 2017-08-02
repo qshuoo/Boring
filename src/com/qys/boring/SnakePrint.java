@@ -2,7 +2,7 @@ package com.qys.boring;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -76,7 +76,7 @@ public class SnakePrint extends JPanel {
 	// »­Éß
 	private void _createSnake(Graphics pen) {
 		
-		ArrayList<Point> _snakeList = snake.get_snakeList();
+		LinkedList<Point> _snakeList = Snake.get_snakeList();
 
 		for (Point p : _snakeList) {
 			pen.setColor(Color.BLUE);
