@@ -2,7 +2,6 @@ package com.qys.boring;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -15,11 +14,17 @@ import javax.swing.JPanel;
  */
 public class SnakePrint extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton _startButton;// 开始按钮
+	//网格大小
 	private final int _x = 0;
 	private final int _y = 0;
 	private final int _panelWidth = 400;
 	private final int _panelHeight = 400;
+	//网格间隔
 	private final int _tileSize = 10;
 	
 	Snake snake = new Snake();
@@ -50,6 +55,9 @@ public class SnakePrint extends JPanel {
 		_creatGameInit(pen);
 		_createSnake(pen);
 		setGameControl(new SnakeControl());
+		snake.move();
+		 System.out.println(Snake.get_snakeList());
+		 System.out.println(Snake.getDirection());
 		this.requestFocus();
 	}
 
@@ -76,14 +84,14 @@ public class SnakePrint extends JPanel {
 	// 画蛇
 	private void _createSnake(Graphics pen) {
 		
-		LinkedList<Point> _snakeList = Snake.get_snakeList();
-
-		for (Point p : _snakeList) {
+		for (Point p : Snake.get_snakeList()) {
 			pen.setColor(Color.BLUE);
 			pen.fillRect(p.get_x(), p.get_y(), _tileSize, _tileSize);
 		}
 
 	}
+	
+	
 
 	// 控制器
 	public void setGameControl(SnakeControl control) {

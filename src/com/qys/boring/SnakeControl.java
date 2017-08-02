@@ -2,35 +2,41 @@ package com.qys.boring;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.LinkedList;
 
 public class SnakeControl implements KeyListener{
 
 	
-	LinkedList<Point> _snakeList = Snake.get_snakeList();
+//	LinkedList<Point> _snakeList = Snake.get_snakeList();
+	Point dir = Snake.getDirection();
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		switch(arg0.getKeyCode()) {
-		case KeyEvent.VK_UP:
-			
-			System.out.println("Up is press");
-			Point p = _snakeList.get(0);
-			Point newP = new Point(p.get_x(),p.get_y()-10);
-			if(newP.get_y()>0) {
-			_snakeList.add(0, newP);
-			_snakeList.remove( _snakeList.size()-1);
-			System.out.println(_snakeList);}
+		case KeyEvent.VK_UP://方向不为下 方向改为上
+			if(dir.get_y()!=10) {
+				dir.set_y(-10);
+				dir.set_x(0);
+			}
 			break;
-		case KeyEvent.VK_DOWN:
-			System.out.println("Down is press");
-			Point p1 = _snakeList.get(0);
-			Point newP1 = new Point(p1.get_x(),p1.get_y()+10);
-			if(newP1.get_y()<400) {
-			_snakeList.add(0, newP1);
-			_snakeList.remove( _snakeList.size()-1);}
+		case KeyEvent.VK_DOWN://方向不为上 方向改为下
+			if(dir.get_y()!=-10) {
+				dir.set_y(10);
+				dir.set_x(0);
+			}
 			break;
-		
+		case KeyEvent.VK_LEFT://方向不为右 方向改为左
+			if(dir.get_x()!=10) {
+				dir.set_x(-10);
+				dir.set_y(0);
+			}
+			break;
+		case KeyEvent.VK_RIGHT://方向不为左 方向改为右
+			if(dir.get_x()!=-10) {
+				dir.set_x(10);
+				dir.set_y(0);
+			}
+		default:
+			break;
 		}
 		
 	}
