@@ -23,7 +23,7 @@ public class Snake {
 		
 		_snakeList.add(p);
 		
-		Obstacle.addPoint(p);
+		//Obstacle.addPoint(p);
 
 	}
 
@@ -67,8 +67,10 @@ public class Snake {
 		Point head = _snakeList.get(0);
 		Point newHead = new Point(head.get_x() + direction.get_x(), head.get_y() + direction.get_y());
 		
+		
+		Obstacle.addPoint(head);
 		_snakeList.addFirst(newHead);
-		Obstacle.addPoint(newHead);
+		
 		
 		
 		Obstacle.removePoint(_snakeList.getLast());
@@ -83,8 +85,10 @@ public class Snake {
 		Point newP = new Point();
 		newP.set_x(p.get_x());
 		newP.set_y(p.get_y());
+		Obstacle.addPoint(_snakeList.getFirst());
 		_snakeList.addFirst(newP);
-		Obstacle.removePoint(newP);
+		
+//		Obstacle.removePoint(newP);
 	}
 	
 	//获取下一位置
