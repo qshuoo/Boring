@@ -14,15 +14,15 @@ public class Food {
 	
 	private  void init() {
 		Random random = new Random();
-		foodPoint.set_x(random.nextInt(40)*10);
-		foodPoint.set_y(random.nextInt(40)*10);
+		foodPoint.set_x((random.nextInt(38)+1)*10);
+		foodPoint.set_y((random.nextInt(38)+1)*10);
 	}
 
 
 	public static void resertPoint() {
 		Random random = new Random();
-		foodPoint.set_x(random.nextInt(40)*10);
-		foodPoint.set_y(random.nextInt(40)*10);
+		foodPoint.set_x((random.nextInt(38)+1)*10);
+		foodPoint.set_y((random.nextInt(38)+1)*10);
 	}
 	
 	
