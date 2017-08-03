@@ -24,11 +24,11 @@ public class Obstacle {
 	public int getPointNum(Point p) {
 		return ob[p.get_x()/10][p.get_y()/10];
 	}
-	public void addPoint(Point p) {
+	public static void addPoint(Point p) {
 		ob[p.get_x()/10][p.get_y()/10] = 1;
 	}
 	
-	public void removePoint(Point p) {
+	public static void removePoint(Point p) {
 		ob[p.get_x()/10][p.get_y()/10] = 0;
 		
 	}

@@ -90,10 +90,10 @@ public class SnakePrint extends JPanel {
 		
 		pen.setColor(Color.BLACK);
 		pen.drawRect(_x, _y, _panelWidth, _panelHeight);
-//		pen.fillRect(_x, _y, _panelWidth, _tileSize);
-//		pen.fillRect(_x, _y, _tileSize, _panelHeight);
-//		pen.fillRect(_x, _panelHeight-_tileSize, _panelWidth, _tileSize);
-//		pen.fillRect(_panelWidth-_tileSize, _y, _tileSize, _panelHeight);
+		pen.fillRect(_x, _y, _panelWidth, _tileSize);
+		pen.fillRect(_x, _y, _tileSize, _panelHeight);
+		pen.fillRect(_x, _panelHeight-_tileSize, _panelWidth, _tileSize);
+		pen.fillRect(_panelWidth-_tileSize, _y, _tileSize, _panelHeight);
 		
 	}
 
@@ -118,6 +118,8 @@ public class SnakePrint extends JPanel {
 		if(_eatJudge()) {
 			snake.eat(Food.getFoodPoint());
 			Food.resertPoint();
+			
+			
 		}
 		else if(!_crashJudge())
 			snake.move();
@@ -125,8 +127,9 @@ public class SnakePrint extends JPanel {
 	
 	//ÉßÅö×²ÅÐ¶¨
 	private boolean _crashJudge() {
-		Point p = Snake.get_snakeList().get(0);
-		if(obstacle.getPointNum(p)==1)
+//		Point p = Snake.get_snakeList().get(0);
+		
+		if(obstacle.getPointNum(snake.getNext())==1)
 			return true;
 		return false;
 	}
