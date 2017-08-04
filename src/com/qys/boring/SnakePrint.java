@@ -2,6 +2,8 @@ package com.qys.boring;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -26,6 +28,10 @@ public class SnakePrint extends JPanel {
 	private final int _panelHeight = 400;
 	//网格间隔
 	private final int _tileSize = 10;
+	
+	//游戏开始结束开关
+	public static boolean gameStart = false;
+	public static boolean gameEnd = false;
 	
 	Snake snake ;
 	Obstacle obstacle;
@@ -61,12 +67,13 @@ public class SnakePrint extends JPanel {
 		_creatGameInit(pen);
 		_createSnake(pen);
 		_createFood(pen);
+		_buttonJudge();
 		if(!_crashJudge())
 			_moveSnake();
 		setGameControl(new SnakeControl());
 //		snake.move();
-		 System.out.println(Snake.get_snakeList());
-		 System.out.println(Snake.getDirection());
+//		 System.out.println(Snake.get_snakeList());
+//		 System.out.println(Snake.getDirection());
 		this.requestFocus();
 	}
 
@@ -128,10 +135,20 @@ public class SnakePrint extends JPanel {
 	private boolean _crashJudge() {
 		Point p = Snake.get_snakeList().get(0);
 		
-		if(obstacle.getPointNum(p)==1)
+		if(obstacle.getPointNum(p)==1) {
+			_gameEnd();
 			return true;
+			}
 		return false;
 	}
+	
+	private void _gameEnd() {
+		gameEnd = true;
+		Snake.get_snakeList().remove();
+//		this.repaint();
+		
+	}
+	
 
 	//蛇吃食物判定
 	
@@ -140,6 +157,46 @@ public class SnakePrint extends JPanel {
 			return true;
 		return false;
 	}
+	
+	//开始按钮点击判定
+	public void _buttonJudge() {
+		_startButton.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				gameStart = true;
+				gameEnd = false;
+				System.out.println(gameStart);
+				
+			}
+		});
+	}
+	
 	// 控制器
 	public void setGameControl(SnakeControl control) {
 		this.addKeyListener(control);
