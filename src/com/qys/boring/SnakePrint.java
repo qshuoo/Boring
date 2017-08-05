@@ -110,7 +110,9 @@ public class SnakePrint extends JPanel {
 		
 		for (Point p : Snake.get_snakeList()) {
 			pen.setColor(Color.BLUE);
-			pen.fillRect(p.get_x(), p.get_y(), _tileSize, _tileSize);
+			if(p == Snake.get_snakeList().getFirst())
+				pen.setColor(Color.GREEN);
+			pen.fillRect(p.get_x()+1, p.get_y()+1, _tileSize-1, _tileSize-1);
 		}
 
 	}

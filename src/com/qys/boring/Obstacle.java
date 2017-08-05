@@ -21,6 +21,10 @@ public class Obstacle {
 		}
 	}
 	
+	public static int getarrayNum(int x,int y) {
+		return ob[x][y];
+	}
+	
 	public int getPointNum(Point p) {
 		return ob[p.get_x()/10][p.get_y()/10];
 	}
