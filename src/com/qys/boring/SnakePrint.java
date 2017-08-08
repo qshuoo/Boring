@@ -29,10 +29,10 @@ public class SnakePrint extends JPanel {
 	//网格间隔
 	private final int _tileSize = 10;
 	
-	//游戏开始结束开关
-	public static boolean gameStart = false;
-	public static boolean gameEnd = false;
-	
+	//游戏开始结束进程
+	Thread snakeTd ;
+
+	//内部对象
 	Snake snake ;
 	Obstacle obstacle;
 	Food food;
@@ -42,6 +42,7 @@ public class SnakePrint extends JPanel {
 		snake = new Snake();
 		obstacle = new Obstacle();
 		food = new Food();
+		snakeTd = new Thread(new SnakeTd(this));
 		_initButton();
 	}
 
@@ -71,9 +72,6 @@ public class SnakePrint extends JPanel {
 		if(!_crashJudge())
 			_moveSnake();
 		setGameControl(new SnakeControl());
-//		snake.move();
-//		 System.out.println(Snake.get_snakeList());
-//		 System.out.println(Snake.getDirection());
 		this.requestFocus();
 	}
 
@@ -144,10 +142,10 @@ public class SnakePrint extends JPanel {
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation")
 	private void _gameEnd() {
-		gameEnd = true;
 		Snake.get_snakeList().remove();
-//		this.repaint();
+		snakeTd.stop();
 		
 	}
 	
@@ -191,9 +189,7 @@ public class SnakePrint extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				gameStart = true;
-				gameEnd = false;
-				System.out.println(gameStart);
+				snakeTd.start();
 				
 			}
 		});

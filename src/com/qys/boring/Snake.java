@@ -23,7 +23,6 @@ public class Snake {
 		
 		_snakeList.add(p);
 		
-		//Obstacle.addPoint(p);
 
 	}
 
@@ -88,7 +87,6 @@ public class Snake {
 		Obstacle.addPoint(_snakeList.getFirst());
 		_snakeList.addFirst(newP);
 		
-//		Obstacle.removePoint(newP);
 	}
 	
 	//获取下一位置

@@ -1,12 +1,11 @@
 package com.qys.boring;
 
-public class SnakeTd extends Thread {
+public class SnakeTd implements Runnable {
 
-	SnakePrint snakePrint;
-	private String control ="";
-
+	private SnakePrint snakePrint;
 	public SnakeTd(SnakePrint snakePrint) {
 		this.snakePrint = snakePrint;
+
 	}
 
 	@Override
@@ -18,31 +17,12 @@ public class SnakeTd extends Thread {
 	}
 
 	public void gameRunning() {
-		System.out.println("123");
-//		System.out.println(SnakePrint.gameEnd);
-//		if(SnakePrint.gameStart) {
-//			control.notify();
-//		}
-		while (!SnakePrint.gameEnd) {
-			synchronized (control) {
-				if (SnakePrint.gameStart) {
-					snakePrint.repaint();
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}/* else {
-					try {
-						control.wait();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-				}*/
-			}
+		snakePrint.repaint();
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
