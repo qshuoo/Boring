@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Snake {
-	private static LinkedList<Point> _snakeList;// 蛇身链表
+	private  LinkedList<Point> _snakeList;// 蛇身链表
 
 	private static Point direction;// 蛇前进方向
 
@@ -52,12 +52,12 @@ public class Snake {
 		direction.set_y(y);
 	}
 
-	public static LinkedList<Point> get_snakeList() {
-		return _snakeList;
+	public LinkedList<Point> get_snakeList() {
+		return this._snakeList;
 	}
 
 	public void set_snakeList(LinkedList<Point> _snakeList) {
-		Snake._snakeList = _snakeList;
+		this._snakeList = _snakeList;
 	}
 
 	

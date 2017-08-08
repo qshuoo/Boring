@@ -5,8 +5,7 @@ import java.awt.event.KeyListener;
 
 public class SnakeControl implements KeyListener{
 
-	
-//	LinkedList<Point> _snakeList = Snake.get_snakeList();
+
 	Point dir = Snake.getDirection();
 	@Override
 	public void keyPressed(KeyEvent arg0) {

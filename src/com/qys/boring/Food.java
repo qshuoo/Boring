@@ -4,7 +4,7 @@ import java.util.Random;
 
 // ≥ŒÔ¿‡
 public class Food {
-	private static Point foodPoint;
+	private  Point foodPoint;
 	
 	{
 		foodPoint = new Point();
@@ -19,7 +19,7 @@ public class Food {
 	}
 
 
-	public static void resertPoint() {
+	public  void resertPoint() {
 		Random random = new Random();
 		int x= random.nextInt(38)+1;
 		int y= random.nextInt(38)+1;
@@ -32,13 +32,13 @@ public class Food {
 	}
 	
 	
-	public static Point getFoodPoint() {
+	public  Point getFoodPoint() {
 		return foodPoint;
 	}
 
 
-	public static void setFoodPoint(Point foodPoint) {
-		Food.foodPoint = foodPoint;
+	public  void setFoodPoint(Point foodPoint) {
+		this.foodPoint = foodPoint;
 	}
 	
 
