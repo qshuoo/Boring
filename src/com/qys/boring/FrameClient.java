@@ -17,7 +17,7 @@ public class FrameClient extends JFrame{
 	private final int _windowWidth = 530;
 	private final int _windowHeight = 450;
 	public FrameClient() {
-		this.setTitle("第一次尝试");
+		this.setTitle("第一個版本");
 		this.setSize(_windowWidth, _windowHeight);
 		//获取屏幕大小
 		Toolkit _toolKit = Toolkit.getDefaultToolkit();

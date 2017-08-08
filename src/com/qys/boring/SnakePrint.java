@@ -1,12 +1,15 @@
 package com.qys.boring;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  * 绘画游戏画面
@@ -22,6 +25,7 @@ public class SnakePrint extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton _startButton;// 开始按钮
 	// 网格大小
+	private JButton _scoreButton;
 	private final int _x = 0;
 	private final int _y = 0;
 	private final int _panelWidth = 400;
@@ -31,15 +35,14 @@ public class SnakePrint extends JPanel {
 	// 遊戲進程是否開始
 	private boolean isRunning = false;
 	// 游戏开始结束进程
-	Thread snakeTd;
+	private Thread snakeTd;
 	
 	// 内部对象
-	Snake snake;
-//	Obstacle obstacle;
-	Food food;
-
+	private Snake snake;
+	private Food food;
+	// 得分
+	private int count;
 	public SnakePrint() {
-//		obstacle = new Obstacle();
 		_initButton();
 	}
 
@@ -53,7 +56,12 @@ public class SnakePrint extends JPanel {
 		_startButton.setLocation(420, 250);
 		_startButton.setSize(90, 30);
 		this.add(_startButton);
-
+		
+		_scoreButton = new JButton();
+		_scoreButton.setText("得分："+Integer.toString(count));
+		_scoreButton.setLocation(420, 100);
+		_scoreButton.setSize(90, 30);
+		this.add(_scoreButton);
 		this.requestFocus();
 
 	}
@@ -61,7 +69,7 @@ public class SnakePrint extends JPanel {
 	// 畫組件
 	@Override
 	public void paintComponent(Graphics pen) {
-		super.paintComponent(pen);
+//		super.paintComponent(pen);
 		_creatGameInit(pen);
 		_buttonJudge();
 		if (isRunning) {
@@ -140,20 +148,24 @@ public class SnakePrint extends JPanel {
 		return false;
 	}
 
+	//遊戲結束
 	@SuppressWarnings("deprecation")
 	private void _gameEnd() {
+		_scoreButton.setText("游戏结束");
 		snakeTd.stop();
 		isRunning = false;
 		snake = null;
 		food = null;
 
 	}
-
 	// 蛇吃食物判定
 
 	private boolean _eatJudge() {
-		if (snake.getNext().equals(food.getFoodPoint()))
+		if (snake.getNext().equals(food.getFoodPoint())) {
+			count++;
+			_scoreButton.setText("得分："+Integer.toString(count));
 			return true;
+		}
 		return false;
 	}
 
@@ -165,6 +177,8 @@ public class SnakePrint extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				if (!isRunning) {
+					count = 0;
+					_scoreButton.setText("得分："+Integer.toString(count));
 					snake = new Snake();
 					food = new Food();
 					isRunning = true;
