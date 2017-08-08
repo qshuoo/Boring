@@ -2,11 +2,8 @@ package com.qys.boring;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -38,14 +35,11 @@ public class SnakePrint extends JPanel {
 	
 	// 内部对象
 	Snake snake;
-	Obstacle obstacle;
+//	Obstacle obstacle;
 	Food food;
 
 	public SnakePrint() {
-		// snake = new Snake();
-		obstacle = new Obstacle();
-		// food = new Food();
-		
+//		obstacle = new Obstacle();
 		_initButton();
 	}
 
@@ -139,7 +133,7 @@ public class SnakePrint extends JPanel {
 	private boolean _crashJudge() {
 		Point p = snake.get_snakeList().get(0);
 
-		if (obstacle.getPointNum(p) == 1) {
+		if (Obstacle.getPointNum(p) == 1) {
 			_gameEnd();
 			return true;
 		}
@@ -148,7 +142,6 @@ public class SnakePrint extends JPanel {
 
 	@SuppressWarnings("deprecation")
 	private void _gameEnd() {
-		// snake.get_snakeList().remove();
 		snakeTd.stop();
 		isRunning = false;
 		snake = null;
@@ -171,7 +164,6 @@ public class SnakePrint extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("123");
 				if (!isRunning) {
 					snake = new Snake();
 					food = new Food();

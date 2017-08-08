@@ -25,7 +25,7 @@ public class Obstacle {
 		return ob[x][y];
 	}
 	
-	public int getPointNum(Point p) {
+	public static int getPointNum(Point p) {
 		return ob[p.get_x()/10][p.get_y()/10];
 	}
 	public static void addPoint(Point p) {
