@@ -1,101 +1,10 @@
 # 一只弱鸡贪吃蛇    
 
 ## step1 利用JFrame创建游戏窗口     
-	public class Frame extends JFrame {
-	
-		// 每个Frame都有一个id
-		private static final long serialVersionUID = 1L;
-		// Frame 窗口大小
-		private final int _windowWidth = 530;
-		private final int _windowHeight = 450;
-	
-		public Frame() {
-			this.setTitle("第一個版本");
-			this.setSize(_windowWidth, _windowHeight);
-			// 获取屏幕大小
-			Toolkit _toolKit = Toolkit.getDefaultToolkit();
-			Dimension _screenSize = _toolKit.getScreenSize();
-			final int _screenWidth = _screenSize.width;
-			final int _screenHeight = _screenSize.height;
-			// 计算居中
-			this.setLocation((_screenWidth - this.getWidth()) / 2, (_screenHeight - this.getHeight()) / 2);
-			// 默认无关闭操作
-			this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-			// 设置窗口不变
-			this.setResizable(false);
-			// 设置可见
-			this.setVisible(true);
-			// 暂时不用布局方式
-			this.setLayout(null);
-		}
-	}
-
-## step2 用JPane设计窗口布局      
-	public class Panel extends JPanel {
-		private static final long serialVersionUID = 1L;
-		// 背景大小
-		private final int _x = 0;
-		private final int _y = 0;
-		private final int _panelWidth = 400;
-		private final int _panelHeight = 400;
-		public Panel() {
-		}	
-		// 画组件
-		@Override
-		public void paintComponent(Graphics pen) {
-			_creatGameInit(pen);
-			this.requestFocus();
-		}
-		// 画背景
-		private void _creatGameInit(Graphics pen) {
-			pen.setColor(Color.WHITE);
-			pen.fillRect(_x + 1, _y + 1, _panelWidth - 1, _panelHeight - 1);
-		
-		}
-	}
-
+继承Swing的JFrame类设计窗口的尺寸位置等属性
+## step2 用JPanel设计窗口布局      
+继承Swing的JPanel设计窗口的布局，之后的游戏元素均在JPanel中放置	
 ## step3 编写基本组成元素Point   
-	public class Point {
-		private int x;
-		private int y;
-	
-		public Point() {}
-	
-		public Point(int x,int y) {
-			this.x = x;
-			this.y = y;
-		}
-	
-		public int getX() {
-			return x;
-		}
-		public void setX(int x) {
-			this.x = x;
-		}
-		public int getY() {
-			return y;
-		}
-		public void setY(int y) {
-			this.y = y;
-		}
-	
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Point other = (Point) obj;
-			if (x != other.x)
-				return false;
-			if (y != other.y)
-				return false;
-			return true;
-		}
-	}
-	
-
-
-
+游戏中的基本元素就时一个一个点    蛇和食物 以及 整个布局 都抽象为一个一个点，点的属性为X,Y表示其坐标
+## step4 设计蛇 并在窗口中显示蛇
+蛇的基本属性有蛇自身，这里用一个LinkedList<Point>表示它是一个由点构成的链表，选用LinkedList的原因时对头和尾的处理更加简单，另一个属性是方向，这里用一个点表示，这个点的格式固定为（x,0）或（0，y）其中x,y的值为窗口布局中选择的一个点的尺寸大小的正负值，蛇头坐标的Point加上方向的Point值就是蛇头的下一位置，蛇的基本方法有移动，吃食物和获取蛇头的下一个点，获取下一个点的目的时辅助判断吃食物
