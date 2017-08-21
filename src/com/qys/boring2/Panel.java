@@ -5,8 +5,6 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-
-
 public class Panel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
@@ -15,10 +13,11 @@ public class Panel extends JPanel {
 	private final int _y = 0;
 	private final int _panelWidth = 400;
 	private final int _panelHeight = 400;
-	//模拟点的大小
+	// 模拟点的大小
 	private final int _tileSize = 10;
-	
+
 	private Snake snake;
+
 	public Panel() {
 		snake = new Snake();
 	}
@@ -28,6 +27,7 @@ public class Panel extends JPanel {
 	public void paintComponent(Graphics pen) {
 		creatGameInit(pen);
 		printSnake(pen);
+		moveSnake();
 		this.requestFocus();
 	}
 
@@ -37,12 +37,18 @@ public class Panel extends JPanel {
 		pen.fillRect(_x + 1, _y + 1, _panelWidth - 1, _panelHeight - 1);
 
 	}
-	
+
+	// 画蛇
 	private void printSnake(Graphics pen) {
 		for (Point p : snake.getsnakeList()) {
 			pen.setColor(Color.BLUE);
 			pen.fillRect(p.getX(), p.getY(), _tileSize, _tileSize);
 		}
+	}
+
+	// 移动蛇
+	private void moveSnake() {
+		snake.move();
 	}
 
 }

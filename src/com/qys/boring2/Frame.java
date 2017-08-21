@@ -23,7 +23,7 @@ public class Frame extends JFrame {
 		final int _screenHeight = _screenSize.height;
 		// 计算居中
 		this.setLocation((_screenWidth - this.getWidth()) / 2, (_screenHeight - this.getHeight()) / 2);
-		// 默认无关闭操作
+		// 默认关闭操作
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// 设置窗口不变
 		this.setResizable(false);
