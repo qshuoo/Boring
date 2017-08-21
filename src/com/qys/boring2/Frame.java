@@ -10,8 +10,8 @@ public class Frame extends JFrame {
 	// 每个Frame都有一个id
 	private static final long serialVersionUID = 1L;
 	// Frame 窗口大小
-	private final int _windowWidth = 530;
-	private final int _windowHeight = 450;
+	private final int _windowWidth = 410;
+	private final int _windowHeight = 430;
 
 	public Frame() {
 		this.setTitle("第一個版本");
