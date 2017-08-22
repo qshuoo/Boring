@@ -28,20 +28,21 @@ public class Panel extends JPanel {
 		creatGameInit(pen);
 		printSnake(pen);
 		moveSnake();
+		this.addKeyListener(new Control());
 		this.requestFocus();
 	}
 
 	// »­±³¾°
 	private void creatGameInit(Graphics pen) {
 		pen.setColor(Color.WHITE);
-		pen.fillRect(_x + 1, _y + 1, _panelWidth - 1, _panelHeight - 1);
+		pen.fillRect(_x, _y, _panelWidth, _panelHeight);
 
 	}
 
 	// »­Éß
 	private void printSnake(Graphics pen) {
+		pen.setColor(Color.BLUE);
 		for (Point p : snake.getsnakeList()) {
-			pen.setColor(Color.BLUE);
 			pen.fillRect(p.getX(), p.getY(), _tileSize, _tileSize);
 		}
 	}
