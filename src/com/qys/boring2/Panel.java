@@ -52,10 +52,14 @@ public class Panel extends JPanel {
 
 	// 移动蛇
 	private void moveSnake() {
-		snake.move();
+		if (snake.getNext().equals(food.getFoodPoint())) {
+			snake.eat(food.getFoodPoint());
+			food.resetPoint();
+		} else
+			snake.move();
 	}
-	
-	//画食物
+
+	// 画食物
 	private void printFood(Graphics pen) {
 		pen.setColor(Color.RED);
 		pen.fillRect(food.getFoodPoint().getX(), food.getFoodPoint().getY(), _tileSize, _tileSize);
