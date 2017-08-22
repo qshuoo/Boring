@@ -17,9 +17,11 @@ public class Panel extends JPanel {
 	private final int _tileSize = 10;
 
 	private Snake snake;
+	private Food food;
 
 	public Panel() {
 		snake = new Snake();
+		food = new Food();
 	}
 
 	// 画组件
@@ -27,6 +29,7 @@ public class Panel extends JPanel {
 	public void paintComponent(Graphics pen) {
 		creatGameInit(pen);
 		printSnake(pen);
+		printFood(pen);
 		moveSnake();
 		this.addKeyListener(new Control());
 		this.requestFocus();
@@ -50,6 +53,12 @@ public class Panel extends JPanel {
 	// 移动蛇
 	private void moveSnake() {
 		snake.move();
+	}
+	
+	//画食物
+	private void printFood(Graphics pen) {
+		pen.setColor(Color.RED);
+		pen.fillRect(food.getFoodPoint().getX(), food.getFoodPoint().getY(), _tileSize, _tileSize);
 	}
 
 }
